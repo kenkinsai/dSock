@@ -62,7 +62,7 @@ func infoHandler(c *gin.Context) {
 		}
 
 		claimIds = userSessionClaims.Val()
-	} else {
+	} else if user != "" {
 		userClaims := redisClient.SMembers("claim-user:" + user)
 
 		if userClaims.Err() != nil {
